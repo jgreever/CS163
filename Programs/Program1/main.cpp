@@ -42,6 +42,12 @@
 /* main() will be for testing my program functions */
 int main()
 {
-
+  node * head = NULL;
+  video vi;
+  int userInput = 0;
+  cout << "Please type a number: ";
+  cin >> userInput;
+  cin.ignore(100, '\n');
+  addNew(head, userInput);
   return 0;
 }

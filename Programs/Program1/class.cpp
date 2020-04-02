@@ -39,3 +39,45 @@
 
 #include "class.h"
 
+/* constructor */
+video::video()
+{
+  //head = NULL;
+  //tail = NULL;
+}
+
+/* deconstructor */
+video::~video()
+{
+  node * current = head;
+  while(current != NULL)
+  {
+  node * next = current->next;
+  delete current;
+  current = next;
+  }
+  head = NULL;
+  //tail = NULL;
+}
+
+/* wrapper */
+int addNew(node * & head)
+{
+  if(!head) return 0; /* base case */
+  return addNew(head, 0);
+}
+
+/* add that data!! */
+int addNew(node * & head, int addData)
+{
+  if(!head)
+  {
+    head = new node;
+    head->next = NULL;
+    head->data = addData;
+    return addData;
+  }
+  addData += head->data;
+  return addNew(head->next, addData);
+}
+

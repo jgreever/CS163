@@ -42,4 +42,34 @@
 #include <cctype>
 using namespace std;
 
+/* Commenting out to add in later
+struct node
+{
+  char name[51];
+  char teacher[21];
+  char topic[51];
+  char length[21];
+  node * next;
+};
+ */
 
+struct node
+{
+  int data;
+  node * next;
+};
+
+class video
+{
+  public:
+    video();
+    ~video();
+    int addNew(node * & head);
+    int addNew(node * & head, int addData);
+  private:
+    node * head;
+    //node * tail;
+};
+
+int addNew(node * & head);
+int addNew(node * & head, int addData);
