@@ -1,4 +1,4 @@
-/* main.cpp
+/* class.h
  * Program 1 - Data Structures
  *
  * Justin Greever
@@ -37,11 +37,9 @@
  *  
  */
 
-#include "class.h"
+#include <iostream>
+#include <cstring>
+#include <cctype>
+using namespace std;
 
-/* main() will be for testing my program functions */
-int main()
-{
 
-  return 0;
-}

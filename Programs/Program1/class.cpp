@@ -1,4 +1,4 @@
-/* main.cpp
+/* class.cpp
  * Program 1 - Data Structures
  *
  * Justin Greever
@@ -39,9 +39,3 @@
 
 #include "class.h"
 
-/* main() will be for testing my program functions */
-int main()
-{
-
-  return 0;
-}
