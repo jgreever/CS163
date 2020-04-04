@@ -44,18 +44,27 @@ int main()
 {
   video my_video;
 
+  /* let's create a temp node to hold info and pass to function */
+  node * tempNode = new node;
   /* let's create a head node to start the list */
   if(my_video.initializeList() == true) cout << "List initialized." << endl;
   else cout << "List exists, skipping." << endl;
   
   /* Get input from user about video */
-  char newName[51];
+  //char newName[51];
   cout << "Enter video name: ";
-  cin.get(newName, 51, '\n');
+  cin.get(tempNode->toWatch.name, 51);
   cin.ignore(100, '\n');
   
+  /* TODO: testing to see if node stored data */
+  cout << "You entered: " << tempNode->toWatch.name << endl;
+
   /* pass video name to function */
-  my_video.add(newName);
+  //my_video.add(tempNode);
+  
+  /* deallocate tempNode */
+  delete tempNode;
+  tempNode = NULL;
 
   /* deallocate all nodes and free memory */
   my_video.~video();

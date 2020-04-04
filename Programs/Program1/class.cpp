@@ -57,27 +57,29 @@ video::~video()
     current = next;
   }
   head = NULL;
-  //tail = NULL;
+  tail = NULL;
 }
 
 bool video::initializeList()
 {
-  node * head = NULL;
-  node * current = head;
-//  head->next = NULL;
-  return true; //we created the first node!
-}
-
-char video::add(char newName[])
-{
   node * current = new node;
   current->next = NULL;
-  strcpy(current->toWatch.name, newName);
+  head = current;
+  tail = current;
+  return true; //we created the first node!
+}
+/*
+bool video::add(node * & tempNode)
+{
+
+}
+
+bool video::add(node * & head,node * & tail, node * & tempNode)
+{
+  node * current = tail;
+  
+  strcpy(current->toWatch.name, tempNode->toWatch.name);
   delete current;
   current = NULL;
 }
-
-char video::add(node * & head, char newName[])
-{
-
-}
+ */
