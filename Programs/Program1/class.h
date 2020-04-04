@@ -71,13 +71,14 @@ class video
   public:
     video();
     ~video();
-    bool initializeList();
-    //bool add(node * & tempNode);
-    //bool add(node * & head,node * & tail, node * & tempNode);
+    bool add(node * & tempNode);
+    bool add(node * & head,node * & tail, node * & tempNode);
+    void display();
+    void display(node * & head);
   private:
     node * head;
     node * tail;
 };
 
-bool initializeList();
-//bool add();
+bool add();
+void display();

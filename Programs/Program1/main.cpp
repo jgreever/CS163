@@ -45,23 +45,38 @@ int main()
   video my_video;
 
   /* let's create a temp node to hold info and pass to function */
-  node * tempNode = new node;
-  /* let's create a head node to start the list */
-  if(my_video.initializeList() == true) cout << "List initialized." << endl;
-  else cout << "List exists, skipping." << endl;
-  
-  /* Get input from user about video */
-  //char newName[51];
-  cout << "Enter video name: ";
-  cin.get(tempNode->toWatch.name, 51);
-  cin.ignore(100, '\n');
-  
-  /* TODO: testing to see if node stored data */
-  cout << "You entered: " << tempNode->toWatch.name << endl;
+  node * tempNode = new node();
 
-  /* pass video name to function */
-  //my_video.add(tempNode);
-  
+  /* loop to enter new entry */
+  char response;
+  response = 'Y';
+  while(response == 'Y')
+  {
+    /* Get input from user about video */
+    cout << "Enter video name: ";
+    cin >> tempNode->toWatch.name;
+    cin.ignore(100, '\n');
+
+    /* TODO: testing to see if node stored data */
+    cout << "You entered: " << tempNode->toWatch.name << endl;
+
+    /* pass video name to function */
+    if(my_video.add(tempNode) == true)
+      cout << "Name added." << endl;
+    else
+      cout << "Something went wrong, try again." << endl;
+    
+    /* ask user if they want to enter another */
+    cout << "Would you like to enter another?" << endl;
+    cout << "'Y' for yes, 'N' for no: ";
+    cin >> response;
+    cin.ignore(100, '\n');
+    response = toupper(response);
+  }
+
+  /* TODO: display all for testing */
+  my_video.display();
+
   /* deallocate tempNode */
   delete tempNode;
   tempNode = NULL;

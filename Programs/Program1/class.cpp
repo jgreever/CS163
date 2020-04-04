@@ -43,43 +43,61 @@
 video::video()
 {
   head = NULL;
-  //tail = NULL;
+  tail = NULL;
 }
 
 /* deconstructor */
 video::~video()
 {
-  node * current = head;
-  while(current != NULL)
+  node * temp = head;
+  while(temp != NULL)
   {
-    node * next = current->next;
-    delete current;
-    current = next;
+    node * next = temp->next;
+    delete temp;
+    temp = next;
   }
+  temp = NULL;
   head = NULL;
   tail = NULL;
 }
 
-bool video::initializeList()
-{
-  node * current = new node;
-  current->next = NULL;
-  head = current;
-  tail = current;
-  return true; //we created the first node!
-}
-/*
 bool video::add(node * & tempNode)
 {
-
+  if(video::add(head, tail, tempNode) == true)
+    return true;
+  else
+    return false;
 }
 
-bool video::add(node * & head,node * & tail, node * & tempNode)
+bool video::add(node * & head, node * & tail, node * & tempNode)
 {
-  node * current = tail;
-  
-  strcpy(current->toWatch.name, tempNode->toWatch.name);
-  delete current;
-  current = NULL;
+  node * temp = new node();
+  strcpy(temp->toWatch.name, tempNode->toWatch.name);
+  temp->next = NULL;
+  if(!head)
+  {
+    head = temp;
+    tail = temp;
+  }
+  else
+  {
+    tail->next = temp;
+    tail = tail->next;
+  }
+  return true;
 }
- */
+
+void video::display()
+{
+  video::display(head);
+}
+
+void video::display(node * & head)
+{
+  node * temp = head;
+  if(temp != NULL)
+  {
+    cout << "Video Name: " << temp->toWatch.name << endl;
+    video::display(temp->next);
+  }
+}
