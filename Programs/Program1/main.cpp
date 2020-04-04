@@ -43,15 +43,11 @@
 int main()
 {
   video my_video;
-  if(my_video.addNew() == true) cout << "List initialized." << endl;
+  if(my_video.initializeList() == true) cout << "List initialized." << endl;
   else cout << "List exists, skipping." << endl;
-
-  my_video.~video();
+  my_video.add();
+  my_video.~video(); //deallocate/free memory
   cout << "Memory deallocated (freed)" << endl;
-  // int userInput = 0;
-  // cout << "Please type a number: ";
-  // cin >> userInput;
-  // cin.ignore(100, '\n');
-  // my_video.addNew(userInput);
+
   return 0;
 }

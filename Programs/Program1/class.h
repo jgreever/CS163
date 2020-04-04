@@ -42,63 +42,41 @@
 #include <cctype>
 using namespace std;
 
-/* Attempting nested structs to hold all the data needed */
-class node
+struct node
 {
-  public:
-    struct toWatch
-    {
-      char name;
-      char teacher;
-      char subject;
-      char videoLength;
-    };
-    struct details
-    {
-      char textbook;
-      char computer;
-      char docCamera;
-      char drawPad;
-      char microphone;
-      char camera;
-      char ppointSlides;
-      char lectureNotes;
-      char etc;
-    };
-    node * next;
+  struct //details
+  {
+    char textbook[51];
+    char computer[51];
+    char docCamera[51];
+    char drawPad[51];
+    char microphone[51];
+    char camera[51];
+    char ppointSlides[51];
+    char lectureNotes[51];
+    char etc[51];
+  }details;
+  struct //toWatch
+  {
+    char name[51];
+    char teacher[51];
+    char subject[51];
+    char videoLength[51];
+  }toWatch;
+  node * next;
 };
-
-/*
-   struct node
-   {
-   char name;
-   char teacher;
-   char topic;
-   char length;
-   node * next;
-   };
-   */
-/*
-   struct node
-   {
-   int data;
-   node * next;
-   };
-   */
 
 class video
 {
   public:
     video();
     ~video();
-    bool addNew();
-    // bool addNew(node * & head, char array[]);
-    // int addNew(int addData);
-    // int addNew(node * & head, int addData);
+    bool initializeList();
+    void add();
   private:
     node * head;
     //node * tail;
 };
 
-// int addNew(int addData);
-// int addNew(node * & head, int addData);
+bool initializeList();
+void add();

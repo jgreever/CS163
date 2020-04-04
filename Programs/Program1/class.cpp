@@ -60,36 +60,24 @@ video::~video()
   //tail = NULL;
 }
 
-bool video::addNew()
+bool video::initializeList()
 {
-  if(!head)
-  {
-    node * current = head;
-    head = new node;
-    head->next = current;
-    return true; //we created the first node!
-  }
-  else
-    return false; //node was already there or list is populated, get out!
+  node * head = NULL;
+  node * current = head;
+//  head->next = NULL;
+  return true; //we created the first node!
 }
 
-/*
-   int video::addNew(int addData)
-   {
-   if(!head) return 0;
-   return addNew(head, addData);
-   }
-
-   int video::addNew(node * & head, int addData)
-   {
-   if(!head)
-   {
-   head = new node;
-   head->next = NULL;
-   head->data = addData;
-   return addData;
-   }
-   addData += head->data;
-   return addNew(head->next, addData);
-   }
-   */
+void video::add()
+{
+  node * current = new node;
+  current->next = NULL;
+  char newName[51];
+  cout << "Enter video name: ";
+  cin.get(newName, 51, '\n');
+  cin.ignore(100, '\n');
+  strcpy(current->toWatch.name, newName);
+  cout << "You entered: " << current->toWatch.name << endl;
+  delete current;
+  current = NULL;
+}
