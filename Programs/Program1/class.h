@@ -42,34 +42,63 @@
 #include <cctype>
 using namespace std;
 
-/* Commenting out to add in later
-struct node
+/* Attempting nested structs to hold all the data needed */
+class node
 {
-  char name[51];
-  char teacher[21];
-  char topic[51];
-  char length[21];
-  node * next;
+  public:
+    struct toWatch
+    {
+      char name;
+      char teacher;
+      char subject;
+      char videoLength;
+    };
+    struct details
+    {
+      char textbook;
+      char computer;
+      char docCamera;
+      char drawPad;
+      char microphone;
+      char camera;
+      char ppointSlides;
+      char lectureNotes;
+      char etc;
+    };
+    node * next;
 };
- */
 
-struct node
-{
-  int data;
-  node * next;
-};
+/*
+   struct node
+   {
+   char name;
+   char teacher;
+   char topic;
+   char length;
+   node * next;
+   };
+   */
+/*
+   struct node
+   {
+   int data;
+   node * next;
+   };
+   */
 
 class video
 {
   public:
     video();
     ~video();
-    int addNew(node * & head);
-    int addNew(node * & head, int addData);
+    bool addNew();
+    // bool addNew(node * & head, char array[]);
+    // int addNew(int addData);
+    // int addNew(node * & head, int addData);
   private:
     node * head;
     //node * tail;
 };
 
-int addNew(node * & head);
-int addNew(node * & head, int addData);
+// int addNew(int addData);
+// int addNew(node * & head, int addData);

@@ -42,12 +42,16 @@
 /* main() will be for testing my program functions */
 int main()
 {
-  node * head = NULL;
-  video vi;
-  int userInput = 0;
-  cout << "Please type a number: ";
-  cin >> userInput;
-  cin.ignore(100, '\n');
-  addNew(head, userInput);
+  video my_video;
+  if(my_video.addNew() == true) cout << "List initialized." << endl;
+  else cout << "List exists, skipping." << endl;
+
+  my_video.~video();
+  cout << "Memory deallocated (freed)" << endl;
+  // int userInput = 0;
+  // cout << "Please type a number: ";
+  // cin >> userInput;
+  // cin.ignore(100, '\n');
+  // my_video.addNew(userInput);
   return 0;
 }

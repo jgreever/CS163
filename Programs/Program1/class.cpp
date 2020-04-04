@@ -42,7 +42,7 @@
 /* constructor */
 video::video()
 {
-  //head = NULL;
+  head = NULL;
   //tail = NULL;
 }
 
@@ -52,32 +52,44 @@ video::~video()
   node * current = head;
   while(current != NULL)
   {
-  node * next = current->next;
-  delete current;
-  current = next;
+    node * next = current->next;
+    delete current;
+    current = next;
   }
   head = NULL;
   //tail = NULL;
 }
 
-/* wrapper */
-int addNew(node * & head)
-{
-  if(!head) return 0; /* base case */
-  return addNew(head, 0);
-}
-
-/* add that data!! */
-int addNew(node * & head, int addData)
+bool video::addNew()
 {
   if(!head)
   {
+    node * current = head;
     head = new node;
-    head->next = NULL;
-    head->data = addData;
-    return addData;
+    head->next = current;
+    return true; //we created the first node!
   }
-  addData += head->data;
-  return addNew(head->next, addData);
+  else
+    return false; //node was already there or list is populated, get out!
 }
 
+/*
+   int video::addNew(int addData)
+   {
+   if(!head) return 0;
+   return addNew(head, addData);
+   }
+
+   int video::addNew(node * & head, int addData)
+   {
+   if(!head)
+   {
+   head = new node;
+   head->next = NULL;
+   head->data = addData;
+   return addData;
+   }
+   addData += head->data;
+   return addNew(head->next, addData);
+   }
+   */
