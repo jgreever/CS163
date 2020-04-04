@@ -68,16 +68,16 @@ bool video::initializeList()
   return true; //we created the first node!
 }
 
-void video::add()
+char video::add(char newName[])
 {
   node * current = new node;
   current->next = NULL;
-  char newName[51];
-  cout << "Enter video name: ";
-  cin.get(newName, 51, '\n');
-  cin.ignore(100, '\n');
   strcpy(current->toWatch.name, newName);
-  cout << "You entered: " << current->toWatch.name << endl;
   delete current;
   current = NULL;
+}
+
+char video::add(node * & head, char newName[])
+{
+
 }

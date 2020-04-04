@@ -72,11 +72,12 @@ class video
     video();
     ~video();
     bool initializeList();
-    void add();
+    char add(char newName[]);
+    char add(node * & head, char newName[]);
   private:
     node * head;
     //node * tail;
 };
 
 bool initializeList();
-void add();
+char add();

@@ -43,10 +43,22 @@
 int main()
 {
   video my_video;
+
+  /* let's create a head node to start the list */
   if(my_video.initializeList() == true) cout << "List initialized." << endl;
   else cout << "List exists, skipping." << endl;
-  my_video.add();
-  my_video.~video(); //deallocate/free memory
+  
+  /* Get input from user about video */
+  char newName[51];
+  cout << "Enter video name: ";
+  cin.get(newName, 51, '\n');
+  cin.ignore(100, '\n');
+  
+  /* pass video name to function */
+  my_video.add(newName);
+
+  /* deallocate all nodes and free memory */
+  my_video.~video();
   cout << "Memory deallocated (freed)" << endl;
 
   return 0;
