@@ -72,12 +72,12 @@ class video
     video();
     ~video();
     bool add(node * & tempNode);
-    bool add(node * & head,node * & tail, node * & tempNode);
     void display();
-    void display(node * & head);
   private:
     node * head;
     node * tail;
+    bool add(node * & head,node * & tail, node * & tempNode);
+    void display(node * & head);
 };
 
 bool add();
