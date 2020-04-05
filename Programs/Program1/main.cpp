@@ -54,7 +54,7 @@ int main()
   {
     /* Get input from user about video */
     cout << "Enter video name: ";
-    cin >> tempNode->toWatch.name;
+    cin.get(tempNode->toWatch.name, 50, '\n');
     cin.ignore(100, '\n');
 
     /* TODO: testing to see if node stored data */
