@@ -1,4 +1,4 @@
-/* class.cpp
+/* video.h 
  * Program 1 - Data Structures
  *
  * Justin Greever
@@ -37,67 +37,22 @@
  *  
  */
 
-#include "class.h"
+#include <iostream>
+#include <cctype>
+#include <cstring>
 
-/* constructor */
-video::video()
+class video
 {
-  head = NULL;
-  tail = NULL;
-}
+  public:
+    video();
+    ~video();
+    int add(char videoName[], char teacher[], char subject[], char videoLength[]);
+    int add(const video & new_video);
+    int display();  
 
-/* deconstructor */
-video::~video()
-{
-  node * temp = head;
-  while(temp != NULL)
-  {
-    node * next = temp->next;
-    delete temp;
-    temp = next;
-  }
-  temp = NULL;
-  head = NULL;
-  tail = NULL;
-}
-
-bool video::add(node * & tempNode)
-{
-  if(video::add(head, tail, tempNode) == true)
-    return true;
-  else
-    return false;
-}
-
-bool video::add(node * & head, node * & tail, node * & tempNode)
-{
-  node * temp = new node();
-  strcpy(temp->toWatch.name, tempNode->toWatch.name);
-  temp->next = NULL;
-  if(!head)
-  {
-    head = temp;
-    tail = temp;
-  }
-  else
-  {
-    tail->next = temp;
-    tail = tail->next;
-  }
-  return true;
-}
-
-void video::display()
-{
-  video::display(head);
-}
-
-void video::display(node * & head)
-{
-  node * temp = head;
-  if(temp != NULL)
-  {
-    cout << "Video Name: " << temp->toWatch.name << endl;
-    video::display(temp->next);
-  }
-}
+  private:
+    char * videoName;
+    char * teacher;
+    char * subject;
+    char * videoLength;
+};

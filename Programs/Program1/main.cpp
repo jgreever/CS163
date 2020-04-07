@@ -37,53 +37,76 @@
  *  
  */
 
-#include "class.h"
+#include "schedule.h"
 
 /* main() will be for testing my program functions */
 int main()
 {
-  video my_video;
+  char videoName[21];
+  char teacher[21];
+  char subject[21];
+  char videoLength[21];
+  video object;
 
-  /* let's create a temp node to hold info and pass to function */
-  node * tempNode = new node();
+  /* using std:: instead of 'using namespace std' and polluting the stack */
+  std::cout << "Please enter the name of the video to add: ";
+  std::cin.get(videoName, 21, '\n');
+  std::cin.ignore(100, '\n');
+  std::cout << "Please enter the teacher(s) name(s): ";
+  std::cin.get(teacher, 21, '\n');
+  std::cin.ignore(100, '\n');
+  std::cout << "Please enter the subject: ";
+  std::cin.get(subject, 21, '\n');
+  std::cin.ignore(100, '\n');
+  std::cout << "Please enter the video length: ";
+  std::cin.get(videoLength, 21, '\n');
+  std::cin.ignore(100, '\n');
+  object.add(videoName, teacher, subject, videoLength);
+  //object.display();
+  
+  int textbook = 0;
+  int computer = 0;
+  int documentCamera = 0;
+  int drawingPad = 0;
+  int microphone = 0;
+  int camera = 0;
+  int powerpointSlides = 0;
+  int lectureNotes = 0;
+  details newdetail;
 
-  /* loop to enter new entry */
-  char response;
-  response = 'Y';
-  while(response == 'Y')
-  {
-    /* Get input from user about video */
-    cout << "Enter video name: ";
-    cin.get(tempNode->toWatch.name, 50, '\n');
-    cin.ignore(100, '\n');
+  std::cout << "Please type '1' for yes, '0' for no." << std::endl;
+  std::cout << "Textbook? ";
+  std::cin >> textbook;
+  std::cin.ignore(100, '\n');
+  std::cout << "Computer? ";
+  std::cin >> computer;
+  std::cin.ignore(100, '\n');
+  std::cout << "Document Camera? ";
+  std::cin >> documentCamera;
+  std::cin.ignore(100, '\n');
+  std::cout << "Drawing Pad? ";
+  std::cin >> drawingPad;
+  std::cin.ignore(100, '\n');
+  std::cout << "Microphone? ";
+  std::cin >> microphone;
+  std::cin.ignore(100, '\n');
+  std::cout << "Camera? ";
+  std::cin >> camera;
+  std::cin.ignore(100, '\n');
+  std::cout << "Power Point Slides? ";
+  std::cin >> powerpointSlides;
+  std::cin.ignore(100, '\n');
+  std::cout << "Lecture Nodes? ";
+  std::cin >> lectureNotes;
+  std::cin.ignore(100, '\n');
+  newdetail.add(textbook, computer, documentCamera, drawingPad, microphone, camera, powerpointSlides, lectureNotes);
+  //newdetail.display();
 
-    /* TODO: testing to see if node stored data */
-    cout << "You entered: " << tempNode->toWatch.name << endl;
-
-    /* pass video name to function */
-    if(my_video.add(tempNode) == true)
-      cout << "Name added." << endl;
-    else
-      cout << "Something went wrong, try again." << endl;
-    
-    /* ask user if they want to enter another */
-    cout << "Would you like to enter another?" << endl;
-    cout << "'Y' for yes, 'N' for no: ";
-    cin >> response;
-    cin.ignore(100, '\n');
-    response = toupper(response);
-  }
-
-  /* TODO: display all for testing */
-  my_video.display();
-
-  /* deallocate tempNode */
-  delete tempNode;
-  tempNode = NULL;
-
-  /* deallocate all nodes and free memory */
-  my_video.~video();
-  cout << "Memory deallocated (freed)" << endl;
+  schedule newtime;
+  newtime.add(object, newdetail);
+  //newtime.add(object, newdetail);
+  newtime.display();
 
   return 0;
 }
+

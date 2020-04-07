@@ -1,4 +1,4 @@
-/* class.h
+/* schedule.h 
  * Program 1 - Data Structures
  *
  * Justin Greever
@@ -37,48 +37,27 @@
  *  
  */
 
-#include <iostream>
-#include <cstring>
-#include <cctype>
-using namespace std;
+#include "details.h"
 
 struct node
 {
-  struct //details
-  {
-    char textbook[51];
-    char computer[51];
-    char docCamera[51];
-    char drawPad[51];
-    char microphone[51];
-    char camera[51];
-    char ppointSlides[51];
-    char lectureNotes[51];
-    char etc[51];
-  }details;
-  struct //toWatch
-  {
-    char name[51];
-    char teacher[51];
-    char subject[51];
-    char videoLength[51];
-  }toWatch;
+  video a_video;
+  details a_detail;
   node * next;
 };
 
-class video
+class schedule
 {
   public:
-    video();
-    ~video();
-    bool add(node * & tempNode);
-    void display();
+    schedule();
+    ~schedule();
+    int add(const video & new_video, const details & new_detail);
+    int add(const details & new_detail);
+    int add(const video & new_video);
+    int display();
+
   private:
     node * head;
     node * tail;
-    bool add(node * & head,node * & tail, node * & tempNode);
-    void display(node * & head);
 };
 
-bool add();
-void display();
