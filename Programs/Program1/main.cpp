@@ -48,64 +48,73 @@ int main()
   char videoLength[21];
   video object;
 
-  /* using std:: instead of 'using namespace std' and polluting the stack */
-  std::cout << "Please enter the name of the video to add: ";
-  std::cin.get(videoName, 21, '\n');
-  std::cin.ignore(100, '\n');
-  std::cout << "Please enter the teacher(s) name(s): ";
-  std::cin.get(teacher, 21, '\n');
-  std::cin.ignore(100, '\n');
-  std::cout << "Please enter the subject: ";
-  std::cin.get(subject, 21, '\n');
-  std::cin.ignore(100, '\n');
-  std::cout << "Please enter the video length: ";
-  std::cin.get(videoLength, 21, '\n');
-  std::cin.ignore(100, '\n');
-  object.add(videoName, teacher, subject, videoLength);
-  //object.display();
-  
-  int textbook = 0;
-  int computer = 0;
-  int documentCamera = 0;
-  int drawingPad = 0;
-  int microphone = 0;
-  int camera = 0;
-  int powerpointSlides = 0;
-  int lectureNotes = 0;
-  details newdetail;
+  /* menu loop */
+  int response = 1;
+  while(response == 1)
+  {
+    /* using std:: instead of 'using namespace std' and polluting the stack */
+    std::cout << "Please enter the name of the video to add: ";
+    std::cin.get(videoName, 21, '\n');
+    std::cin.ignore(100, '\n');
+    std::cout << "Please enter the teacher(s) name(s): ";
+    std::cin.get(teacher, 21, '\n');
+    std::cin.ignore(100, '\n');
+    std::cout << "Please enter the subject: ";
+    std::cin.get(subject, 21, '\n');
+    std::cin.ignore(100, '\n');
+    std::cout << "Please enter the video length: ";
+    std::cin.get(videoLength, 21, '\n');
+    std::cin.ignore(100, '\n');
+    object.add(videoName, teacher, subject, videoLength);
 
-  std::cout << "Please type '1' for yes, '0' for no." << std::endl;
-  std::cout << "Textbook? ";
-  std::cin >> textbook;
-  std::cin.ignore(100, '\n');
-  std::cout << "Computer? ";
-  std::cin >> computer;
-  std::cin.ignore(100, '\n');
-  std::cout << "Document Camera? ";
-  std::cin >> documentCamera;
-  std::cin.ignore(100, '\n');
-  std::cout << "Drawing Pad? ";
-  std::cin >> drawingPad;
-  std::cin.ignore(100, '\n');
-  std::cout << "Microphone? ";
-  std::cin >> microphone;
-  std::cin.ignore(100, '\n');
-  std::cout << "Camera? ";
-  std::cin >> camera;
-  std::cin.ignore(100, '\n');
-  std::cout << "Power Point Slides? ";
-  std::cin >> powerpointSlides;
-  std::cin.ignore(100, '\n');
-  std::cout << "Lecture Nodes? ";
-  std::cin >> lectureNotes;
-  std::cin.ignore(100, '\n');
-  newdetail.add(textbook, computer, documentCamera, drawingPad, microphone, camera, powerpointSlides, lectureNotes);
-  //newdetail.display();
+    int textbook = 0;
+    int computer = 0;
+    int documentCamera = 0;
+    int drawingPad = 0;
+    int microphone = 0;
+    int camera = 0;
+    int powerpointSlides = 0;
+    int lectureNotes = 0;
+    details newdetail;
 
-  schedule newtime;
-  newtime.add(object, newdetail);
-  //newtime.add(object, newdetail);
-  newtime.display();
+    std::cout << "Please type '1' for yes, '0' for no." << std::endl;
+    std::cout << "Textbook? ";
+    std::cin >> textbook;
+    std::cin.ignore(100, '\n');
+    std::cout << "Computer? ";
+    std::cin >> computer;
+    std::cin.ignore(100, '\n');
+    std::cout << "Document Camera? ";
+    std::cin >> documentCamera;
+    std::cin.ignore(100, '\n');
+    std::cout << "Drawing Pad? ";
+    std::cin >> drawingPad;
+    std::cin.ignore(100, '\n');
+    std::cout << "Microphone? ";
+    std::cin >> microphone;
+    std::cin.ignore(100, '\n');
+    std::cout << "Camera? ";
+    std::cin >> camera;
+    std::cin.ignore(100, '\n');
+    std::cout << "Power Point Slides? ";
+    std::cin >> powerpointSlides;
+    std::cin.ignore(100, '\n');
+    std::cout << "Lecture Nodes? ";
+    std::cin >> lectureNotes;
+    std::cin.ignore(100, '\n');
+    newdetail.add(textbook, computer, documentCamera, drawingPad, microphone, camera, powerpointSlides, lectureNotes);
+
+    schedule newtime;
+    newtime.add(object, newdetail);
+
+    std::cout << "Enter another?" << std::endl;
+    std::cout << "Enter '1' for Yes, and '0' for No: ";
+    std::cin >> response;
+    std::cin.ignore(100, '\n');
+  }
+
+  schedule sch;
+  sch.display();
 
   return 0;
 }

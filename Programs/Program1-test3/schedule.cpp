@@ -14,64 +14,75 @@
 
 schedule::schedule()
 {
-  head = tail = NULL;
+  head = NULL;
 }
 
 schedule::~schedule()
 {
-  node * temp = NULL;
+  node *tmp = NULL;
   while(head)
   {
-    temp = head->next;
+    tmp = head->next;
     delete head;
-    head = temp;
+    head = tmp;
   }
-  tail = NULL;
+  head = NULL;
 }
 
 int schedule::add(const node & new_node)
 {
-  node * temp = new node(new_node);
-
-  if(!temp) return 0;
-  temp->next = NULL;
-
-  if(!head)
+  node *tmp = new node;
+  tmp->video_name = new char[strlen(new_node.video_name) + 1];
+  strcpy(tmp->video_name, new_node.video_name);
+  tmp->teacher = new char[strlen(new_node.teacher) + 1];
+  strcpy(tmp->teacher, new_node.teacher);
+  tmp->topic = new char[strlen(new_node.topic) + 1];
+  strcpy(tmp->topic, new_node.topic);
+  tmp->video_length = new char[strlen(new_node.video_length) + 1];
+  strcpy(tmp->video_length, new_node.video_length);
+  tmp->needed = new_node.needed;
+  tmp->next = NULL;
+ 
+  if(NULL == head)
   {
-    head = tail = temp;
+    head = tmp;
   }
   else
   {
-    tail->next = temp;
-    tail = tail->next;
+    node *temp = head;
+    while(temp->next != NULL)
+      temp = temp->next;
+    temp->next = tmp;
   }
   return 1;
 }
 
-int schedule::display()
+void schedule::display()
 {
-  if(!head) return 0;
+  if(!head) return;
 
-  node * current = head;
+  node *current = head;
   while(current)
   {
     cout << endl;
+    cout << "**************************************************" <<endl;
+    cout << "Video Information: " << endl;
+    cout << "Video Name: " << current->video_name << endl;
+    cout << "Teacher Name: " << current->teacher << endl;
+    cout << "Topic: " << current->topic << endl;
+    cout << "Video Length: " << current->video_length << endl;
     cout << endl;
-    cout << current->video_name << endl;
-    cout << current->teacher << endl;
-    cout << current->topic << endl;
-    cout << current->video_length << endl;
-    cout << current->needed.textbook << endl;
-    cout << current->needed.computer << endl;
-    cout << current->needed.document_camera << endl;
-    cout << current->needed.drawing_pad << endl;
-    cout << current->needed.microphone << endl;
-    cout << current->needed.camera << endl;
-    cout << current->needed.power_point_slides << endl;
-    cout << current->needed.lecture_notes << endl;
-    cout << endl;
+    cout << "Required Items: " << endl;
+    cout << "Textbook: " << current->needed.textbook << endl;
+    cout << "Computer: " << current->needed.computer << endl;
+    cout << "Document Camera: " << current->needed.document_camera << endl;
+    cout << "Drawing Pad: " << current->needed.drawing_pad << endl;
+    cout << "Microphone: " << current->needed.microphone << endl;
+    cout << "Camera: " << current->needed.camera << endl;
+    cout << "PowerPoint Slides: " << current->needed.power_point_slides << endl;
+    cout << "Lecture Nodes: " << current->needed.lecture_notes << endl;
+    cout << "**************************************************" << endl;
     cout << endl;
     current = current->next;
   }
-  return 1;
 }

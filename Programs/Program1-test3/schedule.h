@@ -45,16 +45,16 @@ class schedule
     schedule();
     ~schedule();
     int add(const node & new_node);
-    int display();
+    void display();
     int remove();
     int search();
 
   private:
-    node *head, *tail;
+    node *head;
 };
 
 int add();
-int display();
+void display();
 int remove();
 int search();
 
