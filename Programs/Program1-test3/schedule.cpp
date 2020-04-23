@@ -29,7 +29,7 @@ schedule::~schedule()
   tail = NULL;
 }
 
-int schedule::add(const node & new_node)
+int schedule::add(node & new_node)
 {
   node * temp = new node(new_node);
 

@@ -44,14 +44,13 @@ class schedule
   public:
     schedule();
     ~schedule();
-    int add(const node & new_node);
+    int add(node & new_node);
     int display();
     int remove();
     int search();
 
   private:
-    node * head;
-    node * tail;
+    node *head, *tail;
 };
 
 int add();
