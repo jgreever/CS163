@@ -9,6 +9,15 @@
  * TODO: Fill out the upper part
  */
 
+struct video
+{
+  char * date_to_watch;
+  char * video_name;
+  char * teacher;
+  char * topic;
+  int video_length;
+};
+
 struct subnode
 {
   int textbook;
@@ -33,7 +42,7 @@ class schedule
   public:
     schedule();
     ~schedule();
-    int add(const video & new_video, const subnode & new_subnode);
+    int add(const node & new_node);
     int display();
   private:
     node * head;

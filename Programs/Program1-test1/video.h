@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cctype>
 #include <cstring>
+#include <string>
 using namespace std;
 
 /* 
@@ -12,12 +13,13 @@ using namespace std;
  * TODO: Fill out the upper part
  */
 
+/*
 class video
 {
   public:
     video();
     ~video();
-    int add(int date_to_watch, char video_name[], char teacher[], char topic[], int video_length);
+    int add(char date_to_watch[], char video_name[], char teacher[], char topic[], int video_length);
     int add(const video & new_video);
     //int add_subnode(const subnode & new_subnode);
     int display();
@@ -25,7 +27,7 @@ class video
     int search();
 
   private:
-    int date_to_watch;
+    char * date_to_watch;
     char * video_name;
     char * teacher;
     char * topic;
@@ -37,4 +39,5 @@ int add();
 int display();
 int remove();
 int search();
+ */
 

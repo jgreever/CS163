@@ -26,12 +26,11 @@ schedule::~schedule()
   tail = NULL;
 }
 
-int schedule::add(const video & new_video, const subnode & new_subnode)
+int schedule::add(const node & new_node)
 {
   node * temp = new node;
+  std::memcpy(temp, &new_node, sizeof(new_node));
   if(!temp) return 0;
-  temp->a_video.add(new_video);
-  temp->a_subnode = new_subnode;
   temp->next = NULL;
 
   if(!head)
@@ -53,7 +52,11 @@ int schedule::display()
   node * current = head;
   while(current)
   {
-    current->a_video.display();
+    cout << "Date to Watch: " << current->a_video.date_to_watch << endl;
+    cout << "Video Name: " << current->a_video.video_name << endl;
+    cout << "Teacher: " << current->a_video.teacher << endl;
+    cout << "Topic: " << current->a_video.topic << endl;
+    cout << "Video Length: " << current->a_video.video_length << endl;
     cout << "Textbook Required? " << current->a_subnode.textbook << endl;
     cout << "Computer Required? " << current->a_subnode.computer << endl;
     cout << "Document Camera Required? " << current->a_subnode.document_camera << endl;
