@@ -31,10 +31,10 @@ struct items //nested node within struct node()
 
 struct node //our beautiful node!
 {
-  char video_name[SIZE];
-  char teacher[SIZE];
-  char topic[SIZE];
-  char video_length[SIZE];
+  char *video_name;
+  char *teacher;
+  char *topic;
+  char *video_length;
   items needed; //ptr to the items subnode
   node * next; //ptr to next
 };
@@ -44,7 +44,7 @@ class schedule
   public:
     schedule();
     ~schedule();
-    int add(node & new_node);
+    int add(const node & new_node);
     int display();
     int remove();
     int search();

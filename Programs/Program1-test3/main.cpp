@@ -14,27 +14,41 @@
 
 int main()
 {
-  //char temp_video_name[SIZE];
-  //char temp_teacher[SIZE];
-  //char temp_topic[SIZE];
-  //char temp_video_length[SIZE];
-  
-  node * temp = NULL;
+  char temp_video_name[SIZE];
+  char temp_teacher[SIZE];
+  char temp_topic[SIZE];
+  char temp_video_length[SIZE];
+  node temp;
 
   cout << "Enter the video name: ";
-  cin.get(temp->video_name, SIZE, '\n');
+  cin.get(temp_video_name, SIZE, '\n');
   cin.ignore(100, '\n');
   cout << "Enter the teacher name: ";
-  cin.get(temp->teacher, SIZE, '\n');
+  cin.get(temp_teacher, SIZE, '\n');
   cin.ignore(100, '\n');
   cout << "Enter the topic: ";
-  cin.get(temp->topic, SIZE, '\n');
+  cin.get(temp_topic, SIZE, '\n');
   cin.ignore(100, '\n');
-  cin.get(temp->video_length, SIZE, '\n');
+  cout << "Enter the video length: ";
+  cin.get(temp_video_length, SIZE, '\n');
   cin.ignore(100, '\n');
+  temp.video_name = temp_video_name;
+  temp.teacher = temp_teacher;
+  temp.topic = temp_topic;
+  temp.video_length = temp_video_length;
+  //TODO: for testing
+  temp.needed.textbook = 0;
+  temp.needed.computer = 0;
+  temp.needed.document_camera = 0;
+  temp.needed.drawing_pad = 0;
+  temp.needed.microphone = 0;
+  temp.needed.camera = 0;
+  temp.needed.power_point_slides = 0;
+  temp.needed.lecture_notes = 0;
+  //finish TODO
 
   schedule schd;
-  schd.add(*temp);
+  schd.add(temp);
   schd.display();
   
   return 0;
