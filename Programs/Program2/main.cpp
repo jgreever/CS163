@@ -16,6 +16,8 @@ int main()
     int choice;
     int flag = 1;
     int value = 0;
+    package new_package;
+    stack n_stack;
 
     while(flag == 1)
     {
@@ -31,20 +33,21 @@ int main()
         {
             case 1: cout << "Enter Value: ";
                     cin >> value;
-                    stack::push(value);
+                    n_stack.push(new_package);
                     break;
 
-            case 2: stack::pop();
+            case 2: n_stack.pop();
                     break;
 
-            case 3: stack::peek();
+            case 3: n_stack.peek(new_package);
                     break;
 
-            case 4: stack::displayStack();
+            case 4: n_stack.display();
                     break;
 
             case 5: flag = 0;
                     break;
         }
-    return 0;
+        return 0;
+    }
 }
