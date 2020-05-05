@@ -11,23 +11,35 @@
 
 #include "stackandqueue.h"
 
+stack::stack()
+{
+    rear = NULL;
+    top_index = 0;
+}
+
+stack::~stack()
+{
+    while(!head)
+        stack::pop();
+}
+
 int stack::push(const package_entry & to_add)
 {
-    if(!head)
+    if(!rear)
     {
-        head = new node;
-        head->entry = new package_entry[MAX];
-        head->next = NULL;
+        rear = new s_node;
+        rear->entry = new package_entry[MAX];
+        rear->next = NULL;
         top_index = 0;
     }
     if(top_index == MAX)
     {
-        node *temp = head; head = new node;
-        head->entry = new package_entry[MAX];
-        head->next = temp;
+        s_node *temp = rear; rear = new s_node;
+        rear->entry = new package_entry[MAX];
+        rear->next = temp;
         top_index = 0;
     }
-    if(head->entries[top_index].copy_entry(to_add))
+    if(rear->s_entry[top_index].copy_entry(to_add))
         ++top_index;
     else return 0;
     return 1;
@@ -35,17 +47,17 @@ int stack::push(const package_entry & to_add)
 
 int stack::pop(void)
 {
-    if(!head) return 0;
-    node * hold = head->next;
+    if(!rear) return 0;
+    s_node * hold = rear->next;
     if(!top_index)
     {
-        if(head->entries)
-            delete [] head->entries;
-        delete head;
-        head = hold;
+        if(rear->s_entry)
+            delete [] rear->s_entry;
+        delete rear;
+        rear = hold;
         top_index = MAX;
     }
-    if(head) top_index = MAX;
+    if(rear) top_index = MAX;
     else top_index = 0;
     --top_index;
     return 1;
@@ -53,7 +65,8 @@ int stack::pop(void)
 
 int stack::peek(package_entry & found_at_top)
 {
-
+    if(!rear) return 0;
+    else cout << "\nTop of the stack is: " << rear->s_entry;
     return 1;
 }
 
