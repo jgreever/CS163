@@ -10,8 +10,8 @@
     rear->next = new q_node;
     rear = rear->next;
     rear->next = temp;
-    int success = rear->n_package.copy_entry(to_add);
-    return success;
+    //int success = rear->d_package.copy_entry(to_add);
+    return 1; //success;
  }
 
 int queue::dequeue()

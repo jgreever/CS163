@@ -2,7 +2,6 @@
 #include <iostream>
 #include <cstring>
 #include <cctype>
-using namespace std;
 
 struct package
 {
@@ -15,16 +14,15 @@ struct package
 
 struct node
 {
-    package * n_package;
+    package * s_package;
     node * next;
 };
-
-const int MAX = 5;
 
 class stack
 {
     public:
         stack(void);
+        stack(const package & to_add);
         ~stack(void);
         bool is_empty() const;
         int display(void) const;

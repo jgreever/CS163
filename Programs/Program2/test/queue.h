@@ -3,7 +3,7 @@
 struct q_node
 {
     char * d_address[5];
-    package n_package;
+    package d_package;
     q_node * next;
 };
 
