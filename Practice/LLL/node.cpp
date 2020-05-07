@@ -1,6 +1,8 @@
 #include <iostream>
 #include <cctype>
 #include <cstring>
+#include <cstdlib>
+#include <ctime>
 using namespace std;
 
 
@@ -24,14 +26,14 @@ node::node()
 
 node::~node()
 {
-    node * current = head;
-    while(!current)
+    node * temp = head;
+    while(!temp)
     {
-        next = current->next;
-        delete current;
-        current = next;
+        next = temp->next;
+        delete temp;
+        temp = next;
     }
-    current = NULL;
+    temp = NULL;
 }
 
 void display_all(node * head)
@@ -58,18 +60,27 @@ int main()
     int flag = -1;
     while(flag != 2)
     {
-        cout << "\nPlease type any number from 1 to 100: ";
-        cin >> some_data;
-        cin.ignore(100, '\n'); 
-        push(&head, some_data);
-        cout << "\nEnter another? 1 for Yes,  or 2 for No: ";
-        cin >> flag;
-        cin.ignore(100, '\n');
+    cout << "\nPlease type any number from 1 to 100: ";
+    cin >> some_data;
+    cin.ignore(100, '\n'); 
+    push(&head, some_data);
+    cout << "\nEnter another? 1 for Yes,  or 2 for No: ";
+    cin >> flag;
+    cin.ignore(100, '\n');
     }
     */
 
+    //create a list and insert random numbers for
+    //the next practice problem(s)
+    node * temp = new node(); temp = NULL;
+    for(int i = 0; i < 20; i++)
+    {
+        srand(time(0));
+        int random = 0;
+        random = rand() % 100;
+        push(&temp, random);
+    }
 
-
-    display_all(head);
+    display_all(temp);
     return 0;
 }
