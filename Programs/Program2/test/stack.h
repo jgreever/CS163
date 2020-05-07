@@ -3,6 +3,8 @@
 #include <cstring>
 #include <cctype>
 
+const int MAX = 5;
+
 struct package
 {
     char * s_name;
@@ -14,7 +16,7 @@ struct package
 
 struct node
 {
-    package * s_package;
+    package s_package[MAX];
     node * next;
 };
 
